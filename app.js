@@ -3,12 +3,18 @@ document
   .querySelector("ul")
   .addEventListener("click", handleEditDeleteOrCheckCLick);
 document.getElementById("clearAll").addEventListener("click", handleClearAll);
+document.addEventListener("DOMContentLoaded", loadTodos);
 
 function handleSubmitForm(e) {
   e.preventDefault();
   let input = document.querySelector("input");
-  if (input.value != "") addTodo(input.value);
-  input.value = "";
+  if (input.value != "") {
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
+    todos.push(input.value);
+    localStorage.setItem("todos", JSON.stringify(todos));
+    addTodo(input.value);
+    input.value = "";
+  }
 }
 function handleEditDeleteOrCheckCLick(e) {
   if (e.target.name == "checkButton") {
@@ -37,25 +43,33 @@ function addTodo(todo) {
 }
 
 function checkTodo(e) {
-  let item = e.target.parentNode;
+  let item = e.target.closest("li").querySelector(".todo-item");
   if (item.style.textDecoration === "line-through")
     item.style.textDecoration = "none";
   else item.style.textDecoration = "line-through";
 }
 
 function deleteTodo(e) {
-  let item = e.target.parentNode;
-  item.addEventListener("transitionend", function () {
-    item.remove();
-  });
-  item.classList.add("todo-list-item-fall");
+  let item = e.target.closest("li");
+  let todoText = item.querySelector(".todo-item").textContent;
+  item.remove();
+
+  let todos = JSON.parse(localStorage.getItem("todos")) || [];
+  todos = todos.filter((todo) => todo !== todoText);
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 function editTodo(e) {
-  let item = e.target.parentNode;
+  let item = e.target.closest("li").querySelector(".todo-item");
   item.contentEditable = "true";
 }
 
 function handleClearAll(e) {
   document.querySelector("ul").innerHTML = "";
+  localStorage.clear();
+}
+
+function loadTodos() {
+  let todos = JSON.parse(localStorage.getItem("todos")) || [];
+  todos.forEach((todo) => addTodo(todo));
 }
