@@ -1,7 +1,7 @@
 document.querySelector("form").addEventListener("submit", handleSubmitForm);
 document
   .querySelector("ul")
-  .addEventListener("click", handleDeleteOrCheckCLick);
+  .addEventListener("click", handleEditDeleteOrCheckCLick);
 document.getElementById("clearAll").addEventListener("click", handleClearAll);
 
 function handleSubmitForm(e) {
@@ -10,12 +10,15 @@ function handleSubmitForm(e) {
   if (input.value != "") addTodo(input.value);
   input.value = "";
 }
-function handleDeleteOrCheckCLick(e) {
+function handleEditDeleteOrCheckCLick(e) {
   if (e.target.name == "checkButton") {
     checkTodo(e);
   }
   if (e.target.name == "deleteButton") {
     deleteTodo(e);
+  }
+  if (e.target.name == "editButton") {
+    editTodo(e);
   }
 }
 
@@ -25,6 +28,7 @@ function addTodo(todo) {
 
   li.innerHTML = `
   <span class="todo-item">${todo}</span>
+    <button name="editButton"><i class="fas fa-edit"></i></button>
     <button name="checkButton"><i class="fas fa-check-square"></i></button>
     <button name="deleteButton"><i class="fas fa-trash"></i></button>
   `;
@@ -46,6 +50,12 @@ function deleteTodo(e) {
   });
   item.classList.add("todo-list-item-fall");
 }
+
+function editTodo(e) {
+  let item = e.target.parentNode;
+  item.contentEditable = "true";
+}
+
 function handleClearAll(e) {
   document.querySelector("ul").innerHTML = "";
 }
