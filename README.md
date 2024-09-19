@@ -6,10 +6,8 @@
 
 ### Includes:
 
-#### Task sorting by completion status, as well as creation date/time
-
-#### Editable tasks
-
-#### Custom deletion alert
+- Task sorting by completion status, as well as creation date/time
+- Editable tasks
+- Custom deletion alert
 
 ![App Screenshot](AppScreenshot.png)
