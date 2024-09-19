@@ -44,7 +44,7 @@ function addTodo(todo) {
   <span class="todo-date">${new Date(todo.createdAt).toLocaleString()}</span>
     <button name="editButton"><i class="fas fa-edit"></i></button>
     <button name="checkButton"><i class="fas fa-check-square"></i></button>
-    <button name="deleteButton"><i class="fas fa-trash"></i></button>
+    <button name="deleteButton" onclick><i class="fas fa-trash"></i></button>
   `;
   // POSSIBLY NOT NEEDED, COMPLETED ISN'T A FACTOR UNTIL AFTER ITS ADDED //
   if (todo.completed) {
@@ -81,6 +81,7 @@ function deleteTodo(e) {
   let todos = JSON.parse(localStorage.getItem("todos")) || [];
   todos = todos.filter((todo) => todo.task !== todoText);
   localStorage.setItem("todos", JSON.stringify(todos));
+  showDeleteAlert();
 }
 
 function editTodo(e) {
@@ -104,3 +105,10 @@ function loadTodos() {
   todos.forEach((todo) => addTodo(todo));
 }
 console.log("Local Storage: ", localStorage.todos);
+
+function showDeleteAlert() {
+  document.getElementById("alertDiv").classList.add("show");
+  setTimeout(() => {
+    document.getElementById("alertDiv").classList.remove("show");
+  }, 2500);
+}

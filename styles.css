@@ -100,3 +100,6 @@ li{
   font-style: italic;
   color:lightgray
 }
+alert {
+  color: red;
+}

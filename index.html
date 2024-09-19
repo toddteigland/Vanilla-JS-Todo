@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vanilla JS ToDo App</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="alertStyles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,6 +16,9 @@
     <h1>Vanilla JS ToDo App</h1>
   </header>
   <div class="main">
+    <div class="alert" id="alertDiv">
+      Task Deleted!
+    </div>
     <form class="form">
       <input type="text" id="task" placeholder="What would you like to accomplish today?">
       <button type="submit"><i class="fas fa-plus-square"></i></button>

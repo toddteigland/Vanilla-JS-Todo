@@ -1,0 +1,15 @@
+/* The alert message box */
+.alert {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f44336; 
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  display:none;
+}
+.show {
+  display:flex;
+}
