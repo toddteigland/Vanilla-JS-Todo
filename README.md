@@ -4,10 +4,12 @@
 
 ### So I made a simple app for tracking tasks (real original, i know)
 
-### Includes: Task sorting by completion status, as well as creation date/time
+### Includes:
 
-### Editable tasks
+#### Task sorting by completion status, as well as creation date/time
 
-### Custom deletion alert
+#### Editable tasks
+
+#### Custom deletion alert
 
 ![App Screenshot](AppScreenshot.png)
