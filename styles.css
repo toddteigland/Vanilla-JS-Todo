@@ -93,3 +93,10 @@ li{
   transform: translateY(12rem) rotateZ(180deg);
   opacity: 0;
 }
+.crossedOut {
+  text-decoration: line-through;
+}
+::placeholder {
+  font-style: italic;
+  color:lightgray
+}
